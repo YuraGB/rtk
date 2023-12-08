@@ -30,7 +30,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "files": ["./node_modules/redux-persist/types/storage/index.d.ts"],
+ // "files": ["./node_modules/redux-persist/types/storage/index.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules", "build"]
 }
