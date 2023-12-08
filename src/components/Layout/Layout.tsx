@@ -1,14 +1,15 @@
-import {Outlet} from "react-router-dom";
-import {ReactNode} from "react";
-
+import { Outlet } from "react-router-dom";
+import { ReactNode } from "react";
+import classes from "./layout.module.scss";
+import { Header } from "../../modules/headerModule";
 
 const Layout = (): ReactNode => {
+  return (
+    <main className={classes.main}>
+      <Header />
+      <Outlet />
+    </main>
+  );
+};
 
-    return (
-        <article>
-            <Outlet />
-        </article>
-    )
-}
-
-export default Layout
+export default Layout;
