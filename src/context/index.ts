@@ -1,25 +1,40 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userReducer from "./reducers/UserSlice.ts";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import userReducer from './reducers/UserSlice.ts';
+// import { createTransform, persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
+import canvasToolReducer from './reducers/CanvasToolSlice.ts';
+import canvasReducer from './reducers/CanvasContext.ts';
+// import { parse, stringify } from 'flatted';
 
-const persistConfig = {
-  key: "root",
-  storage,
-};
+// export const transformCircular = createTransform(
+//     (inboundState) => stringify(inboundState),
+//     (outboundState) => parse(outboundState),
+// );
+//
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+//     transforms: [transformCircular],
+// };
 
 const rootReducer = combineReducers({
-  userReducer,
+    userReducer,
+    canvasToolReducer,
+    canvasReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const setupStore = () =>
-  configureStore({
-    reducer: persistedReducer,
-    devTools: process.env.NODE_ENV !== "production",
-  });
+    configureStore({
+        reducer: rootReducer,
+        devTools: process.env.NODE_ENV !== 'production',
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                serializableCheck: false,
+            }),
+    });
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore["dispatch"];
+export type AppDispatch = AppStore['dispatch'];

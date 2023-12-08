@@ -6,13 +6,22 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    // List of library files to be included in the compilation
+    "allowJs": true, // Allow JavaScript files to be compiled
+    "esModuleInterop": true, // Disables namespace imports (import * as fs from "fs") and enables CJS/AMD/UMD style imports (import fs from "fs")
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
+    "moduleResolution": "bundler", // Resolve modules using Node.js style
+    "jsx": "react", // Support JSX in .tsx files
+    "sourceMap": true, // Generate corrresponding .map file
+    "declaration": true, // Generate corresponding .d.ts file
+    "incremental": true,
+
     /* Bundler mode */
-    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
@@ -22,5 +31,6 @@
   },
   "include": ["src"],
   "files": ["./node_modules/redux-persist/types/storage/index.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["node_modules", "build"]
 }
