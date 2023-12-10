@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialUserState = {
+const initialCanvasState = {
     canvas: {},
 };
 
 export const canvasContextSlice = createSlice({
     name: 'canvas',
-    initialState: initialUserState,
+    initialState: initialCanvasState,
     reducers: {
         setCanvas(state, action: PayloadAction<HTMLCanvasElement>) {
             state.canvas = action.payload;
