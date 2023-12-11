@@ -1,1 +1,2 @@
-RTK
+TS + redux + Canvas 
+simple drawer
