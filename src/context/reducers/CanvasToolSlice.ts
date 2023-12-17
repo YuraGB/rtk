@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import Tool from '../../modules/drawModule/tools/Tool.ts';
+import { ITool } from '../../modules/drawModule/tools/model/ToolInterface.ts';
 
-interface ToolProps<T extends Tool> {
+interface ToolProps<T extends ITool> {
     tool: T | null;
 }
 
@@ -13,22 +13,21 @@ export const canvasToolSlice = createSlice({
     name: 'tool',
     initialState: initialUserState,
     reducers: {
-        setTool<T extends Tool>(state: ToolProps<T>, action: PayloadAction<T>): void {
-            if (state?.tool !== null) {
-                state.tool = action.payload;
-            }
+        setTool<T extends ITool>(state: ToolProps<T>, action: PayloadAction<T>): void {
+            state.tool = action.payload;
         },
-        setColorStroke<T extends Tool>(state: ToolProps<T>, action: PayloadAction<string>): void {
+        setColorStroke<T extends ITool>(state: ToolProps<T>, action: PayloadAction<string>): void {
+            console.log('set', state.tool);
             if (state.tool !== null) {
                 state.tool.strokeStyle = action.payload;
             }
         },
-        setFillColor<T extends Tool>(state: ToolProps<T>, action: PayloadAction<string>): void {
+        setFillColor<T extends ITool>(state: ToolProps<T>, action: PayloadAction<string>): void {
             if (state.tool !== null) {
                 state.tool.fillStyle = action.payload;
             }
         },
-        setLineWidth<T extends Tool>(state: ToolProps<T>, action: PayloadAction<string>): void {
+        setLineWidth<T extends ITool>(state: ToolProps<T>, action: PayloadAction<string>): void {
             if (state.tool !== null) {
                 state.tool.lineWidth = action.payload;
             }

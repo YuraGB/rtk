@@ -1,6 +1,7 @@
-export default class Tool {
-    protected canvas: HTMLCanvasElement;
-    protected ctx: CanvasRenderingContext2D | null;
+import { ITool } from './model/ToolInterface.ts';
+export default class Tool implements ITool {
+    canvas;
+    ctx;
 
     constructor(canvas: HTMLCanvasElement) {
         this.canvas = canvas;

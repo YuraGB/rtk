@@ -1,10 +1,12 @@
 import Tool from './Tool.ts';
+import { IRect } from './model/RectInterface.ts';
 
-export default class RectTool extends Tool {
-    private mousedown: boolean | undefined;
-    private startX: number | undefined;
-    private startY: number | undefined;
-    private previousRect: [x: number, y: number, w: number, h: number] | undefined | [];
+export default class RectTool extends Tool implements IRect {
+    mousedown: boolean | undefined;
+    startX: number | undefined;
+    startY: number | undefined;
+    previousRect: [x: number, y: number, w: number, h: number] | undefined | [];
+
     constructor(canvas: HTMLCanvasElement) {
         super(canvas);
 

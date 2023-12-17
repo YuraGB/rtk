@@ -1,7 +1,9 @@
 import Tool from './Tool.ts';
+import { IPencil } from './model/PencilInterface.ts';
 
-export default class PencilTool extends Tool {
-    private mousedown: boolean | undefined;
+export default class PencilTool extends Tool implements IPencil {
+    mousedown: boolean | undefined;
+
     constructor(canvas: HTMLCanvasElement) {
         super(canvas);
 
